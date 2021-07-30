@@ -85,5 +85,5 @@
     "compatibleCoreVersion": "0.8.8",
     "url": "https://github.com/Coolmander/dsa5-foundryVTT",
     "manifest": "https://raw.githubusercontent.com/Coolmander/dsa5-foundryVTT/foundry08/system.json",
-    "download": "https://github.com/Coolmander/dsa5-foundryVTT/releases/download/2.2.0/dsa5-foundryVTT-2.2.0.zip"
+    "download": "https://github.com/Coolmander/dsa5-foundryVTT/releases/download/2.2.1/dsa5-foundryVTT-foundry08.zip"
 }
