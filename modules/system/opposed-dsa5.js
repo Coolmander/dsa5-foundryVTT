@@ -98,11 +98,11 @@ export default class OpposedDsa5 {
                   <b>${attacker.name}</b> ${game.i18n.localize("ROLL.Targeting")} <b>${target.data.name}</b>
                 </div>
                 <div class = "opposed-tokens row-section">
-                    <div class="col two attacker"><img src="${attacker.img}" width="50" height="50"/></div>
+                    <div class="col two attacker"><img src="${attacker.img.repace("webm","webp")}" width="50" height="50"/></div>
                     <div class="col two defender"><img src="${target.data.img}" width="50" height="50"/></div>
                 </div>
                 ${unopposedButton}`
-
+                content=
                 let startMessage = await ChatMessage.create({
                     user: game.user.id,
                     content: content,
