@@ -102,7 +102,7 @@ export default class OpposedDsa5 {
                     <div class="col two defender"><img src="${target.data.img}" width="50" height="50"/></div>
                 </div>
                 ${unopposedButton}`
-                content=
+               
                 let startMessage = await ChatMessage.create({
                     user: game.user.id,
                     content: content,
