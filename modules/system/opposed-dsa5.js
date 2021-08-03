@@ -81,11 +81,18 @@ export default class OpposedDsa5 {
 
     static async createOpposedTest(actor, message, testResult, preData) {
         let attacker;
-
+		let attackerToken;
         if (message.data.speaker.token)
-            attacker = canvas.tokens.get(message.data.speaker.token).data
+		{
+			attackerToken=canvas.tokens.get(message.data.speaker.token);
+            attacker = attackerToken.data;
+		}
         else
-            attacker = actor.data.token
+		{
+			attackerToken = actor.data.token;
+			attacker = attackerToken.data;
+		}
+            
 
         if (testResult.successLevel > 0) {
             let attackOfOpportunity = message.data.flags.data.preData.attackOfOpportunity
@@ -98,8 +105,8 @@ export default class OpposedDsa5 {
                   <b>${attacker.name}</b> ${game.i18n.localize("ROLL.Targeting")} <b>${target.data.name}</b>
                 </div>
                 <div class = "opposed-tokens row-section">
-                    <div class="col two attacker"><img src="${attacker.img.repace("webm","webp")}" width="50" height="50"/></div>
-                    <div class="col two defender"><img src="${target.data.img}" width="50" height="50"/></div>
+                    <div class="col two attacker"><img src="${attacker.img.toLowerCase().endsWith("webm")?attackerToken.actor.img:attacker.img}" width="50" height="50"/></div>
+                    <div class="col two defender"><img src="${target.data.img.toLowerCase().endsWith("webm")?target.actor.img:target.data.img}" width="50" height="50"/></div>
                 </div>
                 ${unopposedButton}`
                
@@ -156,9 +163,9 @@ export default class OpposedDsa5 {
                   <b>${attacker.name}</b> ${game.i18n.localize("ROLL.Targeting")} <b>${target.data.name}</b> ${game.i18n.localize("ROLL.failed")}
                 </div>
                 <div class = "opposed-tokens row-section">
-                    <div class="col two attacker"><img src="${attacker.img}" width="50" height="50"/></div>
-                    <div class="col two defender"><img src="${target.data.img}" width="50" height="50"/></div>
-                </div>
+                   <div class="col two attacker"><img src="${attacker.img.toLowerCase().endsWith("webm")?attackerToken.actor.img:attacker.img}" width="50" height="50"/></div>
+                    <div class="col two defender"><img src="${target.data.img.toLowerCase().endsWith("webm")?target.actor.img:target.data.img}" width="50" height="50"/></div>
+               </div>
                 `
                 await ChatMessage.create({
                     user: game.user.id,
